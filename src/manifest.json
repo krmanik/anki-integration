@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "Anki Integration",
+    "description": "Chrome extension to send request to Anki using AnkiConnect Addon",
+    "version": "1.0.0",
+    "icons": {
+        "16": "icon/icon-16.png",
+        "48": "icon/icon-48.png",
+        "144": "icon/icon-144.png"
+    },
+    "options_page": "settings/settings.html",
+    "action": {
+        "default_title": "Anki Integration",
+        "default_popup": "popup/popup.html"
+    },
+    "permissions": [],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "service-worker.js"
+    },
+    "externally_connectable": {
+        "id": ["*"],
+        "matches": [
+            "https://krmanik.github.io/*"
+        ],
+        "accepts_tls_channel_id": false
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "foreground.js"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ]
+        }
+    ]
+}
